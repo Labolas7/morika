@@ -7,8 +7,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Navbar() {
+  const { language, setLanguage, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -19,9 +21,9 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { href: "#collection", label: "Products" },
-    { href: "#story", label: "Story" },
-    { href: "#contact", label: "Contact" },
+    { href: "#collection", label: t("nav.products") },
+    { href: "#story", label: t("nav.story") },
+    { href: "#contact", label: t("nav.contact") },
   ];
 
   return (
@@ -36,19 +38,18 @@ export default function Navbar() {
         boxShadow: scrolled ? "0 2px 20px -8px rgba(43,38,32,0.15)" : "none",
       }}
     >
-      <nav className="container flex items-center justify-between py-4">
+      <nav className="container flex items-center justify-between py-3">
         {/* Logo */}
         <a
           href="#top"
-          className="flex items-center gap-2.5 font-['Fraunces'] font-semibold text-xl"
+          className="flex items-center"
           style={{ color: "var(--color-ink)" }}
         >
           <img
-            src="/manus-storage/morika-logo_89713c14.png"
+            src="/manus-storage/morika-logo-cropped.png"
             alt="Morika Logo"
-            className="w-8 h-8 object-contain"
+            className="h-12 md:h-16 w-auto object-contain"
           />
-          Morika
         </a>
 
         {/* Desktop nav links */}
@@ -57,7 +58,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="relative text-sm font-medium transition-colors duration-200 group"
+              className="relative text-base font-medium transition-colors duration-200 group"
               style={{ color: "var(--color-ink-soft)" }}
               onMouseEnter={(e) =>
                 ((e.target as HTMLElement).style.color = "var(--color-ink)")
@@ -78,9 +79,28 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="flex items-center gap-3">
+          {/* Language toggle */}
+          <button
+            onClick={() => setLanguage(language === "th" ? "en" : "th")}
+            className="hidden md:flex items-center gap-1.5 text-base font-medium px-3.5 py-2.5 rounded-lg transition-all duration-200"
+            style={{
+              color: "var(--color-ink-soft)",
+              border: "1px solid var(--color-line)",
+            }}
+            onMouseEnter={(e) =>
+              ((e.currentTarget as HTMLElement).style.background =
+                "var(--color-cream)")
+            }
+            onMouseLeave={(e) =>
+              ((e.currentTarget as HTMLElement).style.background = "")
+            }
+          >
+            <span>{language === "th" ? "TH" : "EN"}</span>
+          </button>
+
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-full transition-all duration-200"
+            className="hidden md:inline-flex items-center gap-2 text-base font-medium px-6 py-3 rounded-full transition-all duration-200"
             style={{
               background: "var(--color-forest)",
               color: "var(--color-cream)",
@@ -95,14 +115,14 @@ export default function Navbar() {
             }
           >
             <svg
-              width="14"
-              height="14"
+              width="16"
+              height="16"
               viewBox="0 0 24 24"
               fill="currentColor"
             >
               <path d="M12 2C6.5 2 2 5.8 2 10.5c0 3 2 5.7 5 7.3-.2.8-.7 2.4-.8 2.8 0 .3.2.4.4.3.2 0 2.8-1.9 3.9-2.6.8.1 1.6.2 2.5.2 5.5 0 10-3.8 10-8.5S17.5 2 12 2Z" />
             </svg>
-            Order on LINE
+            {t("nav.orderLine")}
           </a>
 
           {/* Mobile hamburger */}
@@ -151,13 +171,23 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <button
+            onClick={() => setLanguage(language === "th" ? "en" : "th")}
+            className="flex items-center gap-1.5 text-sm font-medium px-3 py-2 rounded-lg"
+            style={{
+              color: "var(--color-ink-soft)",
+              border: "1px solid var(--color-line)",
+            }}
+          >
+            <span>{language === "th" ? "TH" : "EN"}</span>
+          </button>
           <a
             href="#contact"
             className="inline-flex items-center justify-center gap-2 text-sm font-medium px-5 py-3 rounded-full mt-2"
             style={{ background: "var(--color-forest)", color: "var(--color-cream)" }}
             onClick={() => setMobileOpen(false)}
           >
-            Order on LINE
+            {t("nav.orderLine")}
           </a>
         </div>
       )}

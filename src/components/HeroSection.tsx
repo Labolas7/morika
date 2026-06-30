@@ -6,7 +6,10 @@
 
 "use client";
 
+import { useLanguage } from "@/contexts/LanguageContext";
+
 export default function HeroSection() {
+  const { t } = useLanguage();
   return (
     <section
       id="top"
@@ -18,7 +21,7 @@ export default function HeroSection() {
           className="block text-xs font-semibold tracking-[0.18em] uppercase mb-5"
           style={{ color: "var(--color-clay)" }}
         >
-          Natural · Cozy · Wild
+          {t("hero.tag")}
         </span>
 
         <h1
@@ -28,13 +31,13 @@ export default function HeroSection() {
             color: "var(--color-ink)",
           }}
         >
-          Every meal for your furry friend
+          {t("hero.title")}
           <br />
           <em
             className="font-light not-italic"
             style={{ color: "var(--color-forest)" }}
           >
-            Warm and cozy like home
+            {t("hero.subtitle")}
           </em>
         </h1>
 
@@ -42,8 +45,7 @@ export default function HeroSection() {
           className="text-base mb-8 max-w-md leading-relaxed"
           style={{ color: "var(--color-ink-soft)" }}
         >
-          Real wooden pet bowl stands, inspired by green forests and simplicity
-          Engrave your pet's name on the wood, making every corner of your home their true sanctuary
+          {t("hero.description")}
         </p>
 
         <div className="flex flex-wrap gap-3">
@@ -70,7 +72,7 @@ export default function HeroSection() {
               <circle cx="13.5" cy="9.5" r="1.6"/>
               <circle cx="17" cy="11" r="1.6"/>
             </svg>
-            View Collection
+            {t("hero.viewCollection")}
           </a>
           <a
             href="#story"
@@ -88,16 +90,16 @@ export default function HeroSection() {
               (e.currentTarget as HTMLElement).style.color = "var(--color-wood-dark)";
             }}
           >
-            About Morika
+            {t("hero.aboutMorika")}
           </a>
         </div>
 
         {/* Trust badges */}
         <div className="flex flex-wrap gap-5 mt-10">
           {[
-            { icon: "🌿", text: "Real Oak Wood" },
-            { icon: "✋", text: "Handmade" },
-            { icon: "🐾", text: "Pet Safe" },
+            { icon: "🌿", text: t("hero.realOak") },
+            { icon: "✋", text: t("hero.handmade") },
+            { icon: "🐾", text: t("hero.petSafe") },
           ].map((badge) => (
             <div
               key={badge.text}
@@ -134,7 +136,7 @@ export default function HeroSection() {
             className="absolute top-5 right-5 morika-tag text-sm"
             style={{ background: "rgba(245,239,227,0.92)", backdropFilter: "blur(4px)" }}
           >
-            ✦ Real Oak Wood
+            ✦ {t("hero.realOak")}
           </div>
         </div>
 
@@ -156,7 +158,7 @@ export default function HeroSection() {
             color: "var(--color-cream)",
           }}
         >
-          <div className="text-xs opacity-75 mb-0.5">Starting from</div>
+          <div className="text-xs opacity-75 mb-0.5">{t("hero.startingFrom")}</div>
           <div className="font-['Fraunces'] font-semibold text-lg">฿390</div>
         </div>
       </div>

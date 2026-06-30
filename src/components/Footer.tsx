@@ -6,7 +6,10 @@
 
 "use client";
 
+import { useLanguage } from "@/contexts/LanguageContext";
+
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer
       className="pt-16 pb-10"
@@ -29,7 +32,7 @@ export default function Footer() {
               Morika
             </a>
             <p className="text-sm leading-relaxed" style={{ color: "var(--color-ink-soft)" }}>
-              Real wooden pet bowl stands, designed to make every meal warm and cozy like home
+              {t("footer.description")}
             </p>
           </div>
 
@@ -40,12 +43,12 @@ export default function Footer() {
                 className="text-xs font-semibold uppercase tracking-widest mb-4"
                 style={{ color: "var(--color-ink-soft)" }}
               >
-                Explore
+                {t("footer.explore")}
               </h5>
               {[
-                { href: "#collection", label: "Collection" },
-                { href: "#story", label: "Our Story" },
-                { href: "#contact", label: "Contact" },
+                { href: "#collection", label: t("footer.collection") },
+                { href: "#story", label: t("footer.story") },
+                { href: "#contact", label: t("footer.contact") },
               ].map((link) => (
                 <a
                   key={link.href}
@@ -69,7 +72,7 @@ export default function Footer() {
                 className="text-xs font-semibold uppercase tracking-widest mb-4"
                 style={{ color: "var(--color-ink-soft)" }}
               >
-                Contact
+                {t("footer.contactTitle")}
               </h5>
               <a
                 href="https://line.me/R/ti/p/@morika"
@@ -114,7 +117,7 @@ export default function Footer() {
           className="text-center font-['Caveat'] text-lg"
           style={{ color: "var(--color-ink-soft)" }}
         >
-          made with love, for every fur baby — © 2026
+          {t("footer.copyright")}
         </p>
       </div>
     </footer>

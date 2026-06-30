@@ -6,40 +6,43 @@
 
 "use client";
 
-const products = [
-  {
-    id: "solo",
-    name: "Morika Solo",
-    desc: "1-bowl stand · Perfect for single pets",
-    price: "฿390",
-    image: "/manus-storage/morika-solo_9b18441d.jpg",
-    tag: "Popular",
-    tagColor: "var(--color-forest)",
-    detail: "Oak wood · 1 ceramic bowl · Size S/M/L",
-  },
-  {
-    id: "duo",
-    name: "Morika Duo",
-    desc: "2-bowl stand · For multi-pet homes",
-    price: "฿490",
-    image: "/manus-storage/morika-duo_a1220e38.jpg",
-    tag: "Recommended",
-    tagColor: "var(--color-clay)",
-    detail: "Oak wood · 2 ceramic bowls · Size S/M/L",
-  },
-  {
-    id: "engraved",
-    name: "Morika Engraved",
-    desc: "Engraved name & leaf · Unique gift",
-    price: "฿590",
-    image: "/manus-storage/morika-engraved_7ac64d19.jpg",
-    tag: "Gift",
-    tagColor: "var(--color-wood-dark)",
-    detail: "Oak wood · Free engraving · Leaf pattern",
-  },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function CollectionSection() {
+  const { t } = useLanguage();
+
+  const products = [
+    {
+      id: "solo",
+      name: t("collection.solo.name"),
+      desc: t("collection.solo.desc"),
+      price: "฿390",
+      image: "/manus-storage/morika-solo_9b18441d.jpg",
+      tag: t("collection.solo.tag"),
+      tagColor: "var(--color-forest)",
+      detail: t("collection.solo.detail"),
+    },
+    {
+      id: "duo",
+      name: t("collection.duo.name"),
+      desc: t("collection.duo.desc"),
+      price: "฿490",
+      image: "/manus-storage/morika-duo_a1220e38.jpg",
+      tag: t("collection.duo.tag"),
+      tagColor: "var(--color-clay)",
+      detail: t("collection.duo.detail"),
+    },
+    {
+      id: "engraved",
+      name: t("collection.engraved.name"),
+      desc: t("collection.engraved.desc"),
+      price: "฿590",
+      image: "/manus-storage/morika-engraved_7ac64d19.jpg",
+      tag: t("collection.engraved.tag"),
+      tagColor: "var(--color-wood-dark)",
+      detail: t("collection.engraved.detail"),
+    },
+  ];
   return (
     <section id="collection" className="py-20 md:py-28">
       {/* Section header */}
@@ -52,16 +55,16 @@ export default function CollectionSection() {
             <circle cx="13.5" cy="9.5" r="1.4"/>
             <circle cx="17" cy="11" r="1.4"/>
           </svg>
-          Choose the perfect one for your pet
+          {t("collection.tag")}
         </span>
         <h2
           className="font-['Fraunces'] font-semibold mb-4"
           style={{ fontSize: "clamp(1.9rem, 3vw, 2.6rem)", color: "var(--color-ink)" }}
         >
-          Our Collection
+          {t("collection.title")}
         </h2>
-        <p className="max-w-md mx-auto" style={{ color: "var(--color-ink-soft)" }}>
-          Real oak wood, hand-polished, safe finish, with removable ceramic bowls
+        <p className="max-w-md mx-auto whitespace-nowrap" style={{ color: "var(--color-ink-soft)" }}>
+          {t("collection.description")}
         </p>
       </div>
 
@@ -142,7 +145,7 @@ export default function CollectionSection() {
                     (e.currentTarget as HTMLElement).style.color = "var(--color-ink)";
                   }}
                 >
-                  Inquire
+                  {t("collection.inquire")}
                 </a>
               </div>
             </div>

@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { LanguageProvider } from '@/contexts/LanguageContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Morika - Pet Bowl Stands',
-  description: 'Natural, cozy pet bowl stands that feel like home',
+  title: 'Morika - ชามอาหารสัตว์เลี้ยง',
+  description: 'ชามอาหารสัตว์เลี้ยงสไตล์ธรรมชาติ น่ารัก เหมือนบ้าน',
 }
 
 export default function RootLayout({
@@ -15,8 +16,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="th">
+      <body className={inter.className}>
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   )
 }

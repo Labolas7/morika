@@ -4,38 +4,43 @@
  * Colors: forest bg / cream text / wood-light accents
  */
 
-const steps = [
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-        <path d="M12 2C7 2 3 6 3 12c4 0 8-2 9-6 1 4 5 6 9 6 0-6-4-10-9-10Z"/>
-      </svg>
-    ),
-    title: "Oak from sustainable plantations",
-    desc: "Only flawless boards selected, natural wood grain patterns"
-  },
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-        <circle cx="12" cy="12" r="9"/>
-        <path d="M12 8v4l3 3"/>
-      </svg>
-    ),
-    title: "Non-toxic clear finish",
-    desc: "Safe even if your pet licks or chews on it"
-  },
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-        <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
-      </svg>
-    ),
-    title: "Hand-engraved names",
-    desc: "Each stand has your pet's name, truly one-of-a-kind"
-  },
-];
+"use client";
+
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function StorySection() {
+  const { t } = useLanguage();
+
+  const steps = [
+    {
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <path d="M12 2C7 2 3 6 3 12c4 0 8-2 9-6 1 4 5 6 9 6 0-6-4-10-9-10Z"/>
+        </svg>
+      ),
+      title: t("story.step1.title"),
+      desc: t("story.step1.desc")
+    },
+    {
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 8v4l3 3"/>
+        </svg>
+      ),
+      title: t("story.step2.title"),
+      desc: t("story.step2.desc")
+    },
+    {
+      icon: (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
+          <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+      ),
+      title: t("story.step3.title"),
+      desc: t("story.step3.desc")
+    },
+  ];
   return (
     <section
       id="story"
@@ -67,7 +72,7 @@ export default function StorySection() {
             className="morika-tag mb-6 inline-flex"
             style={{ color: "#E8DFC4", borderColor: "#E8DFC4" }}
           >
-            From Forest to Your Home
+            {t("story.tag")}
           </span>
           <h2
             className="font-['Fraunces'] font-semibold leading-tight mb-5"
@@ -77,23 +82,23 @@ export default function StorySection() {
               marginTop: "18px",
             }}
           >
-            The best love
+            {t("story.title")}
             <br />
-            is simplicity
+            {t("story.subtitle")}
           </h2>
           <p className="mb-3 leading-relaxed" style={{ color: "#D9D2BD", maxWidth: "440px" }}>
-            We source wood from sustainable plantations, hand-polish and finish each piece, believing that good things don't need to be loud
+            {t("story.p1")}
           </p>
           <p className="leading-relaxed" style={{ color: "#D9D2BD", maxWidth: "440px" }}>
-            Just doing its job perfectly — letting your pet eat comfortably, and making your home a little warmer
+            {t("story.p2")}
           </p>
 
           {/* Stats */}
           <div className="flex gap-10 mt-10">
             {[
-              { num: "500+", label: "Families trust us" },
-              { num: "100%", label: "Real Oak" },
-              { num: "3", label: "Models to choose" },
+              { num: "500+", label: t("story.stat1") },
+              { num: "100%", label: t("story.stat2") },
+              { num: "3", label: t("story.stat3") },
             ].map((stat) => (
               <div key={stat.label}>
                 <div

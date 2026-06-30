@@ -6,7 +6,10 @@
 
 "use client";
 
+import { useLanguage } from "@/contexts/LanguageContext";
+
 export default function ContactSection() {
+  const { t } = useLanguage();
   return (
     <section id="contact" className="py-20 md:py-28">
       <div className="container">
@@ -19,7 +22,7 @@ export default function ContactSection() {
           }}
         >
           <span className="morika-tag mb-6 inline-flex">
-            Ready to make one for your pet
+            {t("contact.tag")}
           </span>
 
           <h2
@@ -29,15 +32,14 @@ export default function ContactSection() {
               color: "var(--color-ink)",
             }}
           >
-            Want your pet to have their own stand?
+            {t("contact.title")}
           </h2>
 
           <p
             className="max-w-md mx-auto mb-10 leading-relaxed"
             style={{ color: "var(--color-ink-soft)" }}
           >
-            Tell us your pet's name, preferred wood color, and size
-            Our team will recommend the perfect model for you
+            {t("contact.description")}
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center">
@@ -62,7 +64,7 @@ export default function ContactSection() {
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2C6.5 2 2 5.8 2 10.5c0 3 2 5.7 5 7.3-.2.8-.7 2.4-.8 2.8 0 .3.2.4.4.3.2 0 2.8-1.9 3.9-2.6.8.1 1.6.2 2.5.2 5.5 0 10-3.8 10-8.5S17.5 2 12 2Z"/>
               </svg>
-              Contact on LINE
+              {t("contact.line")}
             </a>
 
             {/* Facebook button */}
@@ -86,7 +88,7 @@ export default function ContactSection() {
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/>
               </svg>
-              Facebook Inbox
+              {t("contact.facebook")}
             </a>
           </div>
 
@@ -98,9 +100,9 @@ export default function ContactSection() {
               color: "var(--color-ink-soft)",
             }}
           >
-            <span>📦 Nationwide shipping</span>
-            <span>⏱️ 3–5 business days</span>
-            <span>🎁 Free gift wrapping</span>
+            <span>{t("contact.shipping")}</span>
+            <span>{t("contact.days")}</span>
+            <span>{t("contact.gift")}</span>
           </div>
         </div>
       </div>
